@@ -4,8 +4,7 @@ export default function RandomMeal() {
     const [meal, setMeal] = useState(null);
 
     useEffect(() => {
-        // Appel API pour récupérer un plat aléatoire
-        fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+        fetch("https://www.themealdb.com/api/json/v1/1/random.php")                                         // Appel API pour récupérer un plat aléatoire
         .then(response => response.json())
         .then(data => setMeal(data.meals[0]))
         .catch(error => console.error("Erreur lors de la récupération du plat aléatoire :", error));
@@ -29,7 +28,6 @@ export default function RandomMeal() {
                 <h2 className="text-2xl font-semibold mb-4 text-black">Instructions</h2>
                 <p className="text-gray-700 mb-6 ">{meal.strInstructions}</p>
 
-                {/* Liste des ingrédients */}
                 <h2 className="text-2xl font-semibold mb-4 text-black">Ingrédients</h2>
                 <ul className="list-disc pl-6 text-black">
                 {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => {

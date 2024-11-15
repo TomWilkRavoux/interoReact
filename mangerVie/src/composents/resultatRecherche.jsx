@@ -7,8 +7,8 @@ export default function SearchResults() {
     const [results, setResults] = useState([]);
     const location = useLocation();
 
-    // Récupérer la requête de recherche depuis l'URL
-    const query = new URLSearchParams(location.search).get('query');
+
+    const query = new URLSearchParams(location.search).get('query');                        // Récupérer la requête de recherche depuis l'URL
 
     useEffect(() => {
         if (query) {

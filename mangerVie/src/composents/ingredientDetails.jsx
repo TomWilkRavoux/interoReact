@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 export default function IngredientRecipes() {
-    const { ingredient } = useParams(); // Récupère le nom de l'ingrédient depuis l'URL
+    const { ingredient } = useParams();                                                             // Récupère le nom de l'ingrédient depuis l'URL
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        // Appel API pour récupérer les recettes par ingrédient
-        fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)
+        fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)                 // Appel API pour récupérer les recettes par ingrédient
         .then(response => response.json())
         .then(data => setRecipes(data.meals))
         .catch(error => console.error("Erreur lors de la récupération des recettes :", error));

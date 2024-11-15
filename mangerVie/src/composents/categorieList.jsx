@@ -4,8 +4,7 @@ export default function CategorieList() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        // Appel API pour récupérer les catégories
-        fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
+        fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")                                    // Appel API pour récupérer les catégories
         .then(response => response.json())
         .then(data => setCategories(data.meals))
         .catch(error => console.error("Erreur lors de la récupération des catégories :", error));

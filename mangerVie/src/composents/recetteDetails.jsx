@@ -2,19 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 export default function RecipeDetails() {
-    const { id } = useParams(); // Récupère l'ID de la recette depuis l'URL
+    const { id } = useParams();                                                             // Récupère l'ID de la recette depuis l'URL
     const [recipe, setRecipe] = useState(null);
 
     useEffect(() => {
-        // Appel à l'API pour récupérer les détails de la recette
-        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)                 // Appel à l'API pour récupérer les détails de la recette
         .then(response => response.json())
-        .then(data => setRecipe(data.meals[0])) // On récupère la première recette (unique)
+        .then(data => setRecipe(data.meals[0]))                  // On récupère la première recette
         .catch(error => console.error("Erreur lors de la récupération des détails :", error));
     }, [id]);
 
-    // Si les données ne sont pas encore chargées
-    if (!recipe) return <p>Chargement...</p>;
+    if (!recipe) return <p>Chargement...</p>;                   // Si données pas encore chargées
 
     return (
             <div className="bg-gray-100 min-h-screen p-6">
@@ -33,7 +31,7 @@ export default function RecipeDetails() {
                 {/* Affichage des ingrédients */}
                 <h2 className="text-2xl text-black font-semibold mb-4">Ingrédients</h2>
                 <ul className="list-disc text-black pl-6">
-                    {Array.from({ length: 20 }, (_, i) => i + 1) // On parcourt les ingrédients
+                    {Array.from({ length: 20 }, (_, i) => i + 1)                    // On parcourt les ingrédients
                     .map((num) => {
                         const ingredient = recipe[`strIngredient${num}`];
                         const measure = recipe[`strMeasure${num}`];
@@ -44,8 +42,7 @@ export default function RecipeDetails() {
                         ) : null;
                     })}
                 </ul>
-        
-                {/* Lien vers une vidéo si disponible */}
+
                 {recipe.strYoutube && (
                     <div className="mt-6">
                         <h2 className="text-2xl font-semibold mb-4">Vidéo</h2>

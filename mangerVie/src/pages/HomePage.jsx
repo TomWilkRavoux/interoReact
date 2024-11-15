@@ -18,8 +18,8 @@ export default function Home() {
     }, []);
 
 
-      // Récupérer les catégories (6 premières)
-    useEffect(() => {
+
+    useEffect(() => {                                                                 // Récupérer les catégories 
         fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
             .then(response => response.json())
             .then(data => {
@@ -29,12 +29,11 @@ export default function Home() {
     }, []);
 
 
-  // Récupérer les 6 plats contenant l'ingrédient "chicken_breast"
-    useEffect(() => {
-        // Appel API pour récupérer la liste des ingrédients
+
+    useEffect(() => {                                                             // Récupérer les 6 plats
         fetch("https://www.themealdb.com/api/json/v1/1/list.php?i=list")
         .then(response => response.json())
-        .then(data => setIngredients(data.meals.slice(0, 6))) // Limite à 6 ingrédients
+        .then(data => setIngredients(data.meals.slice(0, 6)))                   
         .catch(error => console.error("Erreur lors de la récupération des ingrédients :", error));
     }, []);
 
@@ -53,7 +52,6 @@ export default function Home() {
                             <h2 className="text-lg font-semibold">{meal.strMeal}</h2>
                             <p className="text-gray-600">Catégorie : {meal.strCategory}</p>
                             <p className="text-gray-600">Origine : {meal.strArea}</p>
-                            {/* Lien vers la page de détails de la recette */}
                             <a href={`/recipe/${meal.idMeal}`} className="text-blue-500 font-bold mt-2 inline-block">Voir les détails</a>
                         </div>
                     ))}
@@ -92,6 +90,7 @@ export default function Home() {
                     ))}
                 </div>
             </div>
+            <br />
             <Footer/>
         </div>
 
