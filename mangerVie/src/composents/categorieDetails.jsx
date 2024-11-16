@@ -15,30 +15,30 @@ export default function CategoryRecipes() {
     if (!recipes.length) return <p>Chargement...</p>;
 
     return (
-        <div className="bg-gray-100 min-h-screen p-6">
-        <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-            <h1 className="text-3xl font-bold mb-6 text-black text-center">
-            Recettes pour la catégorie "{category}"
-            </h1>
-            <div className="grid grid-cols-3 gap-6">
-            {recipes.map((meal) => (
-                <div key={meal.idMeal} className="recipe-card border p-4 rounded-lg shadow-lg">
-                <img
-                    src={meal.strMealThumb}
-                    alt={meal.strMeal}
-                    className="w-full h-40 object-cover rounded-lg mb-4"
-                />
-                <h2 className="text-lg font-semibold">{meal.strMeal}</h2>
-                <Link
-                    to={`/recipe/${meal.idMeal}`}
-                    className="text-blue-500 font-bold mt-2 inline-block"
-                >
-                    Voir les détails
-                </Link>
+        <div className="bg-gray-900 text-white min-h-screen p-6">
+            <div className="max-w-6xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h1 className="text-4xl font-bold mb-6 text-blue-400 text-center">
+                Recettes pour la catégorie "{category}"
+                </h1>
+                <div className="grid grid-cols-3 gap-8">
+                {recipes.map((meal) => (
+                    <div key={meal.idMeal}  className="bg-gray-700 border border-gray-600 p-4 rounded-lg shadow-lg hover:scale-105 transform transition duration-300">
+                    <img
+                        src={meal.strMealThumb}
+                        alt={meal.strMeal}
+                        className="w-full h-48 object-cover rounded-lg mb-4 shadow-md"
+                    />
+                    <h2 className="text-lg font-semibold text-blue-300 text-center mb-2">{meal.strMeal}</h2>
+                    <Link
+                        to={`/recipe/${meal.idMeal}`}
+                        className="block text-center bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300"
+                    >
+                        Voir les détails
+                    </Link>
+                    </div>
+                ))}
                 </div>
-            ))}
             </div>
-        </div>
         </div>
     );
 }

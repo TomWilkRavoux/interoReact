@@ -13,12 +13,12 @@ export default function CategorieList() {
     if (!categories.length) return <p>Chargement...</p>;
 
     return (
-        <div className="bg-gray-100 min-h-screen p-6">
-            <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-                <h1 className="text-3xl font-bold mb-6 text-black text-center">Liste des Catégories</h1>
-                <ul className="list-disc pl-6 text-black">
+        <div className="bg-gray-900 text-white min-h-screen p-6">
+            <div className="max-w-4xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h1 className="text-4xl font-bold mb-6 text-blue-400 text-center">Liste des Catégories</h1>
+                <ul className="space-y-4">
                 {categories.map((category, index) => (
-                    <li key={index} className="text-lg mb-2 text-black">
+                    <li key={index} className="text-lg font-semibold text-gray-300 bg-gray-700 p-4 rounded-lg shadow-md hover:bg-gray-600 hover:text-blue-400 transition duration-300">
                     {category.strCategory}
                     </li>
                 ))}
