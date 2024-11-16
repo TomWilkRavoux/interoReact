@@ -40,58 +40,64 @@ export default function Home() {
 
     return (
 
-        <div>
-            <Header/>
+        <div className="bg-gray-900 text-white min-h-screen">
             <br/><br/>
-            <div>
-                <h1 className="text-3xl font-bold text-center mb-6"> Recettes populaires</h1>
-                <div className="grid grid-cols-3 gap-6 ">
-                    {recette.map((meal) => (
-                        <div key={meal.idMeal} className="recipe-card category-card border p-4 rounded-lg shadow-lg text-center">
-                            <img src={meal.strMealThumb} alt={meal.strMeal} className="recipe-image" />
-                            <h2 className="text-lg font-semibold">{meal.strMeal}</h2>
-                            <p className="text-gray-600">Catégorie : {meal.strCategory}</p>
-                            <p className="text-gray-600">Origine : {meal.strArea}</p>
-                            <a href={`/recipe/${meal.idMeal}`} className="text-blue-500 font-bold mt-2 inline-block">Voir les détails</a>
-                        </div>
-                    ))}
-                </div>            
-            </div>
-            <br/><br/><br/>
-            <div>
-                <h2 className="text-2xl font-bold text-center mb-6">Catégories</h2>
-                <div className="grid grid-cols-3 gap-6">
-                    {categories.map((category) => (
-                        <div key={category.idCategory} className="category-card border p-4 rounded-lg shadow-lg text-center">
-                            <img src={category.strCategoryThumb} alt={category.strCategory} className="category-image w-full h-40 object-cover rounded-lg mb-4" />
-                            <h3 className="text-lg font-semibold">{category.strCategory}</h3>
-                            <Link to={`/category/${category.strCategory}`} className="text-blue-500 font-bold mt-2 inline-block">Voir les recettes</Link>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <br/><br/><br/>
-            <div>
-                <h2 className="text-2xl font-bold text-center mb-6">Liste des Ingrédients</h2>
-                <div className="grid grid-cols-3 gap-6">
-                    {ingredients.map((ingredient) => (
-                        <div key={ingredient.idIngredient} className="ingredient-card border p-4 rounded-lg shadow-lg">
-                        <h3 className="text-lg font-semibold mb-2">{ingredient.strIngredient}</h3>
-                        {ingredient.strDescription && (
-                            <p className="text-white text-sm">{ingredient.strDescription.substring(0, 100)}...</p>
-                        )}
-                        <Link
-                            to={`/ingredient/${ingredient.strIngredient}`}
-                            className="text-blue-500 font-bold mt-2 inline-block"
-                        >
-                            Voir les recettes
-                        </Link>
-                        </div>
-                    ))}
-                </div>
-            </div>
+            <div className="p-6">
+                    <section className="mb-12">
+                        <h1 className="text-4xl font-bold text-center mb-6 text-blue-400"> Recettes populaires</h1>
+                        <div  className="grid grid-cols-3 gap-6">
+                            {recette.map((meal) => (
+                                <div key={meal.idMeal} className="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition duration-300">
+                                    <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full h-48 object-cover"/>
+                                    <div className="p-4 text-center">
+                                        <h2 className="text-lg font-semibold text-blue-300">{meal.strMeal}</h2>
+                                        <p className="text-gray-400">Catégorie : {meal.strCategory}</p>
+                                        <p className="text-gray-400">Origine : {meal.strArea}</p>
+                                        <a href={`/recipe/${meal.idMeal}`}  className="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700">Voir les détails</a>
+                                    </div>
+                                </div>
+                            ))}
+                        </div> 
+                    </section>               
+                <br/><br/><br/>
+                <section className="mb-12">
+                    <h2  className="text-4xl font-bold text-center mb-6 text-blue-400">Catégories</h2>
+                    <div className="grid grid-cols-3 gap-6">
+                        {categories.map((category) => (
+                            <div key={category.idCategory}  className="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition duration-300">
+                                <img src={category.strCategoryThumb} alt={category.strCategory}  className="w-full h-48 object-cover" />
+                                <div className="p-4 text-center">
+                                    <h3 className="text-lg font-semibold text-blue-300">{category.strCategory}</h3>
+                                    <Link to={`/category/${category.strCategory}`} className="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700">Voir les recettes</Link>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+                <br/><br/><br/>
+                <section className="mb-12">
+                    <h2 className="text-4xl font-bold text-center mb-6 text-blue-400">Liste des Ingrédients</h2>
+                    <div className="grid grid-cols-3 gap-6">
+                        {ingredients.map((ingredient) => (
+                            <div key={ingredient.idIngredient}  className="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition duration-300">
+                                <div className="p-4 text-center">
+                                    <h3 className="text-lg font-semibold text-blue-300 mb-2">{ingredient.strIngredient}</h3>
+                                    {ingredient.strDescription && (
+                                        <p className="text-gray-400 text-sm mb-4">{ingredient.strDescription.substring(0, 100)}...</p>
+                                    )}
+                                    <Link
+                                        to={`/ingredient/${ingredient.strIngredient}`}
+                                        className="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                    >
+                                        Voir les recettes
+                                    </Link>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            </div>    
             <br />
-            <Footer/>
         </div>
 
     );

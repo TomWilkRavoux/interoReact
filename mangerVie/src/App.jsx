@@ -9,6 +9,8 @@ import IngredientRecipes from './composents/ingredientDetails.jsx';
 import CategorieList from './composents/categorieList.jsx';
 import RandomMeal from './composents/randomMeal.jsx';
 import SearchResults from './composents/resultatRecherche.jsx';
+import Header from './composents/header.jsx';
+import Footer from './composents/footer.jsx';
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
     <>
 
         <BrowserRouter>
+        <Header />
         <Routes>
           <Route path='/' element={<HomePage/>} />
           <Route path="/categories" element={<CategorieList />} />
@@ -26,6 +29,7 @@ function App() {
           <Route path="/category/:category" element={<CategoryRecipes />} />
           <Route path="/ingredient/:ingredient" element={<IngredientRecipes />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   )

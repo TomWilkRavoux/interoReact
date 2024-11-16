@@ -13,23 +13,23 @@ export default function RandomMeal() {
     if (!meal) return <p>Chargement...</p>;
 
     return (
-        <div className="bg-gray-100 min-h-screen p-6">
-            <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-                <h1 className="text-3xl font-bold mb-6 text-black text-center">
+        <div className="bg-gray-900 text-white min-h-screen p-6">
+            <div className="max-w-4xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h1 className="text-4xl font-bold mb-6 text-blue-400 text-center">
                 Plat Aléatoire : {meal.strMeal}
                 </h1>
                 <img
-                src={meal.strMealThumb}
-                alt={meal.strMeal}
-                className="w-full max-w-lg mx-auto h-auto rounded-lg mb-6"
+                    src={meal.strMealThumb}
+                    alt={meal.strMeal}
+                    className="w-full max-w-lg mx-auto h-auto rounded-lg mb-6 shadow-md"
                 />
-                <p className="text-lg mb-4 text-black"><strong>Catégorie :</strong> {meal.strCategory}</p>
-                <p className="text-lg mb-4 text-black"><strong>Origine :</strong> {meal.strArea}</p>
-                <h2 className="text-2xl font-semibold mb-4 text-black">Instructions</h2>
-                <p className="text-gray-700 mb-6 ">{meal.strInstructions}</p>
+                <p className="text-lg mb-4"><strong className="text-blue-400">Catégorie :</strong> {meal.strCategory}</p>
+                <p className="text-lg mb-4"><strong className="text-blue-400">Origine :</strong> {meal.strArea}</p>
+                <h2 className="text-2xl font-semibold mb-4 text-blue-400">Instructions</h2>
+                <p className="text-gray-300 mb-6 leading-relaxed">{meal.strInstructions}</p>
 
-                <h2 className="text-2xl font-semibold mb-4 text-black">Ingrédients</h2>
-                <ul className="list-disc pl-6 text-black">
+                <h2 className="text-2xl font-semibold mb-4 text-blue-400">Ingrédients</h2>
+                <ul className="hover:text-blue-400 transition duration-300">
                 {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => {
                     const ingredient = meal[`strIngredient${num}`];
                     const measure = meal[`strMeasure${num}`];
@@ -42,12 +42,12 @@ export default function RandomMeal() {
                 {/* Vidéo si disponible */}
                 {meal.strYoutube && (
                 <div className="mt-6">
-                    <h2 className="text-2xl font-semibold mb-4">Vidéo</h2>
+                    <h2 className="text-2xl font-semibold mb-4 text-blue-400">Vidéo</h2>
                     <a
                     href={meal.strYoutube}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-500 font-bold"
+                    className="text-blue-500 font-bold hover:text-blue-700 transition duration-300"
                     >
                     Regarder sur YouTube
                     </a>
