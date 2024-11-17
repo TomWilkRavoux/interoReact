@@ -21,7 +21,7 @@ export default function Header() {
 return (
         <header className="bg-gray-900 text-white p-4 shadow-md w-full">
         <div className="flex justify-between items-center max-w-7xl mx-auto px-4">
-            <h1 className="text-2xl font-bold text-blue-500">MyMealApp</h1>
+            <Link to={`/`}> <h1 className="text-2xl font-bold text-blue-500">MyMealApp</h1></Link>
             <button
                 onClick={handleMenuToggle}
                 className="text-white focus:outline-none sm:hidden"
