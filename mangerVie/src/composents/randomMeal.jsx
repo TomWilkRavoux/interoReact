@@ -3,6 +3,16 @@ import React, { useEffect, useState } from 'react';
 export default function RandomMeal() {
     const [meal, setMeal] = useState(null);
 
+    const fetchRandomMeal = () => {
+            fetch("https://www.themealdb.com/api/json/v1/1/random.php")                                         // Appel API pour récupérer un plat aléatoire
+            .then(response => response.json())
+            .then(data => setMeal(data.meals[0]))
+            .catch(error => console.error("Erreur lors de la récupération du plat aléatoire :", error));
+
+    }
+    useEffect(() => {
+        fetchRandomMeal();
+    }, []);
     useEffect(() => {
         fetch("https://www.themealdb.com/api/json/v1/1/random.php")                                         // Appel API pour récupérer un plat aléatoire
         .then(response => response.json())
@@ -53,6 +63,14 @@ export default function RandomMeal() {
                     </a>
                 </div>
                 )}
+                <div className="mt-8 text-center">
+                    <button
+                        onClick={fetchRandomMeal}
+                        className="bg-violet-600 text-white px-6 py-2 rounded-full hover:bg-purple-950 transition duration-300"
+                    >
+                        Charger un autre plat
+                    </button>
+                </div>
             </div>
         </div>
     );

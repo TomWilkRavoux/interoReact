@@ -22,22 +22,22 @@ export default function SearchResults() {
     return (
         <div>
             <div className="p-6 bg-gray-900 text-white min-h-screen">
-                    <h1 className="text-4xl font-bold text-center mb-6 text-blue-400">Résultats de recherche pour "{query}"</h1>
-                    <div className="grid grid-cols-3 gap-6">
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 text-blue-400">Résultats de recherche pour "{query}"</h1>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {results.length > 0 ? (
                         results.map((meal) => (
                             <div key={meal.idMeal}  className="bg-gray-800 border border-gray-700 rounded-lg shadow-lg overflow-hidden hover:scale-105 transform transition duration-300">
-                                <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full h-48 object-cover" />
+                                <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full h-40 sm:h-48 object-cover"/>
                                 <div className="p-4 text-center">
                                     <h2 className="text-lg font-semibold text-blue-300">{meal.strMeal}</h2>
-                                    <Link to={`/recipe/${meal.idMeal}`} className="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700">
+                                    <Link to={`/recipe/${meal.idMeal}`} className="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300">
                                         Voir les détails
                                     </Link>
                                 </div>
                             </div>
                         ))
                         ) : (
-                        <p className="text-center text-gray-400 col-span-3">Aucun résultat trouvé.</p>
+                        <p className="text-center text-gray-400 col-span-1 sm:col-span-2 lg:col-span-3">Aucun résultat trouvé.</p>
                         )}
                     </div>
                     </div>
