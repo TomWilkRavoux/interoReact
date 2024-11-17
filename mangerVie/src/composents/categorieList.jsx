@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function CategorieList() {
     const [categories, setCategories] = useState([]);
@@ -19,7 +20,9 @@ export default function CategorieList() {
                 <ul className="space-y-4">
                 {categories.map((category, index) => (
                     <li key={index} className="text-lg font-semibold text-gray-300 bg-gray-700 p-4 rounded-lg shadow-md hover:bg-gray-600 hover:text-blue-400 transition duration-300">
-                    {category.strCategory}
+                        <Link to={`/category/${category.strCategory}`} className="block w-full"> 
+                            {category.strCategory}
+                        </Link>
                     </li>
                 ))}
                 </ul>
