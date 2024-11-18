@@ -30,7 +30,7 @@ export default function RecipeDetails() {
             
                     {/* Affichage des ingrédients */}
                     <h2 className="text-2xl font-semibold mb-4 text-blue-400">Ingrédients</h2>
-                    <ul className="list-disc pl-6 space-y-2 text-gray-300">
+                    <ul className="list-decimal pl-6 space-y-2 text-gray-300">
                         {Array.from({ length: 20 }, (_, i) => i + 1)                    // On parcourt les ingrédients
                         .map((num) => {
                             const ingredient = recipe[`strIngredient${num}`];

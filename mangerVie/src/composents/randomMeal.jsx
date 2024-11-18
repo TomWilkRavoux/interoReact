@@ -39,12 +39,14 @@ export default function RandomMeal() {
                 <p className="text-gray-300 mb-6 leading-relaxed">{meal.strInstructions}</p>
 
                 <h2 className="text-2xl font-semibold mb-4 text-blue-400">Ingrédients</h2>
-                <ul className="hover:text-blue-400 transition duration-300">
+                <ul className="list-decimal pl-6 space-y-2 text-gray-300">
                 {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => {
                     const ingredient = meal[`strIngredient${num}`];
                     const measure = meal[`strMeasure${num}`];
                     return ingredient ? (
-                    <li key={num}>{measure} {ingredient}</li>
+                    <li key={num} className="hover:text-blue-400 transition duration-300">
+                        {measure} {ingredient}
+                    </li>
                     ) : null;
                 })}
                 </ul>

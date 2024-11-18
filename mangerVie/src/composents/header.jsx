@@ -24,7 +24,7 @@ return (
             <Link to={`/`}> <h1 className="text-2xl font-bold text-blue-500">MyMealApp</h1></Link>
             <button
                 onClick={handleMenuToggle}
-                className="text-white focus:outline-none sm:hidden"
+                className="bg-gray-800 text-white focus:outline-none sm:hidden"
             >
                 {isMenuOpen ? (
                     <svg
@@ -57,7 +57,6 @@ return (
                     />
                     </svg>
                 )}
-
             </button>
             <nav
                 className={`${
