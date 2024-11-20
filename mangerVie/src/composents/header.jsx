@@ -21,7 +21,9 @@ export default function Header() {
 return (
         <header className="bg-gray-900 text-white p-4 shadow-md w-full">
         <div className="flex justify-between items-center max-w-7xl mx-auto px-4">
-            <Link to={`/`}> <h1 className="text-2xl font-bold text-blue-500">MyMealApp</h1></Link>
+            <div className="flex-1">
+                <Link to={`/`}> <h1 className="text-2xl font-bold text-blue-500">MyMealApp</h1></Link>
+            </div>
             <button
                 onClick={handleMenuToggle}
                 className="bg-gray-800 text-white focus:outline-none sm:hidden"
@@ -58,16 +60,20 @@ return (
                     </svg>
                 )}
             </button>
-            <nav
-                className={`${
-                isMenuOpen ? "block" : "hidden"
-                } sm:flex sm:items-center sm:space-x-6 sm:static sm:bg-transparent sm:p-0 bg-gray-800 p-4 rounded-lg absolute top-16 left-0 right-0 z-50`}
-            >
-                <ul className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 mr-8">
-                    <li><Link to="/" className="px-4 text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700">Home</Link></li>
-                    <li><Link to="/categories" className="px-4 text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700">Catégories</Link></li>
-                    <li><Link to="/random" className="px-4 text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700">Plat Aléatoire</Link></li>
-                </ul>
+            <div className="flex-1 flex justify-center">
+                <nav
+                    className={`${
+                    isMenuOpen ? "block" : "hidden"
+                    } sm:flex sm:items-center sm:space-x-6 sm:static sm:bg-transparent sm:p-0 bg-gray-800 p-4 rounded-lg absolute top-16 left-0 right-0 z-50`}
+                >
+                    <ul className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 mr-8">
+                        <li><Link to="/" className="px-4 text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700">Home</Link></li>
+                        <li><Link to="/categories" className="px-4 text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700">Catégories</Link></li>
+                        <li><Link to="/random" className="px-4 text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700">Plat Aléatoire</Link></li>
+                    </ul>
+                </nav>    
+            </div>
+            <div className="flex-1 flex justify-end">
                 <form
                     onSubmit={handleSearch}
                     className="mt-4 sm:mt-0 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-2"
@@ -83,7 +89,8 @@ return (
                         Rechercher
                     </button>
                 </form>
-            </nav>
+            </div>
+                
         </div>
         </header>
     );
