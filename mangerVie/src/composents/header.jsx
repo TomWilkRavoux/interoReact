@@ -20,13 +20,15 @@ export default function Header() {
 
 return (
         <header className="bg-gray-900 text-white p-4 shadow-md w-full">
-            <div className="flex justify-between items-center max-w-7xl mx-auto px-4">
-                <Link to="/">
-                    <h1 className="text-2xl font-bold text-blue-500">MyMealApp</h1>
-                </Link>
+            <div className="flex justify-between items-center mx-auto px-4">
+                <div className="flex justify-start items-center flex-1 flex-shrink-0">
+                    <Link to="/">
+                        <h1 className="text-2xl font-bold text-blue-500">MyMealApp</h1>
+                    </Link>
+                </div>
                 <button
                     onClick={handleMenuToggle}
-                    className="bg-gray-800 text-white focus:outline-none sm:hidden"
+                    className="bg-gray-800 text-white focus:outline-none sm:hidden flex-shrink-0"
                 >
                     {isMenuOpen ? (
                         <svg
@@ -60,48 +62,49 @@ return (
                         </svg>
                     )}
                 </button>
-                <nav
-                    className={`${
-                        isMenuOpen ? 'block' : 'hidden'
-                    } sm:flex sm:items-center sm:space-x-6 sm:static sm:bg-transparent sm:p-0 bg-gray-800 p-4 rounded-lg absolute top-16 left-0 right-0 z-50`}
-                >
-                    {/* Menu Items */}
-                    <ul className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 mr-0 sm:mr-8">
-                        <li>
-                            <Link
-                                to="/"
-                                className="px-4 text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700"
-                            >
-                                Home
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/categories"
-                                className="px-4 text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700"
-                            >
-                                Catégories
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/random"
-                                className="px-4 text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700"
-                            >
-                                Plat Aléatoire
-                            </Link>
-                        </li>
-                    </ul>
+                <div className="hidden sm:flex sm:flex-1 sm:justify-end ">
+                    <nav
+                        className="hidden sm:flex sm:flex-1 sm:justify-end"
+                    >
+                        <ul className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 mr-0 sm:mr-8">
+                            <li>
+                                <Link
+                                    to="/"
+                                    className="px-4 text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700"
+                                >
+                                    Home
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/categories"
+                                    className="px-4 text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700"
+                                >
+                                    Catégories
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/random"
+                                    className="px-4 text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700"
+                                >
+                                    Plat Aléatoire
+                                </Link>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div className="hidden sm:flex-1 sm:flex sm:justify-end">
                     <form
                         onSubmit={handleSearch}
-                        className="block sm:hidden mt-4 flex-col items-center sm:flex-row sm:items-center sm:space-x-2"
+                        className="hidden sm:flex mt-4 sm:mt-0 flex-col items-center sm:space-y-2"
                     >
                         <input
                             type="text"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                             placeholder="Rechercher une recette"
-                            className="w-full sm:w-64 px-3 py-2 rounded-full text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full sm:w-48 lg:w-52 px-3 py-2 rounded-full text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         <button
                             type="submit"
@@ -110,25 +113,56 @@ return (
                             Rechercher
                         </button>
                     </form>
-                </nav>
-                <form
-                    onSubmit={handleSearch}
-                    className="hidden sm:flex mt-4 sm:mt-0 flex-col items-center sm:space-y-2"
-                >
-                    <input
-                        type="text"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        placeholder="Rechercher une recette"
-                        className="w-full sm:w-48 lg:w-52 px-3 py-2 rounded-full text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                    <button
-                        type="submit"
-                        className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300"
-                    >
-                        Rechercher
-                    </button>
-                </form>
+                </div>
+                    {isMenuOpen && (
+                        <div className="sm:hidden bg-gray-800 p-4 rounded-lg absolute top-16 left-0 right-0 z-50">
+                            <ul className="flex flex-col space-y-4">
+                                <li>
+                                    <Link
+                                        to="/"
+                                        className="text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700"
+                                    >
+                                        Home
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        to="/categories"
+                                        className="text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700"
+                                    >
+                                        Catégories
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        to="/random"
+                                        className="text-lg bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-700"
+                                    >
+                                        Plat Aléatoire
+                                    </Link>
+                                </li>
+                            </ul>
+                            {/* Barre de recherche mobile */}
+                            <form
+                                onSubmit={handleSearch}
+                                className="mt-4 flex flex-col space-y-2"
+                            >
+                                <input
+                                    type="text"
+                                    value={query}
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    placeholder="Rechercher une recette"
+                                    className="w-full px-3 py-2 rounded-full text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                                <button
+                                    type="submit"
+                                    className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300"
+                                >
+                                    Rechercher
+                                </button>
+                            </form>
+                        </div>
+            )}
             </div>
         </header>
     );
