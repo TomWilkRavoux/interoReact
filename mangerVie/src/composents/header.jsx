@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function Header() {
     const [query, setQuery] = useState('');
-    const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -94,7 +94,7 @@ return (
                     </ul>
                     <form
                         onSubmit={handleSearch}
-                        className="mt-4 sm:mt-0 flex flex-col items-center sm:flex-row sm:items-center sm:space-x-2"
+                        className="block sm:hidden mt-4 flex-col items-center sm:flex-row sm:items-center sm:space-x-2"
                     >
                         <input
                             type="text"
@@ -111,6 +111,24 @@ return (
                         </button>
                     </form>
                 </nav>
+                <form
+                    onSubmit={handleSearch}
+                    className="hidden sm:flex mt-4 sm:mt-0 flex-col items-center sm:space-y-2"
+                >
+                    <input
+                        type="text"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        placeholder="Rechercher une recette"
+                        className="w-full sm:w-48 lg:w-52 px-3 py-2 rounded-full text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <button
+                        type="submit"
+                        className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300"
+                    >
+                        Rechercher
+                    </button>
+                </form>
             </div>
         </header>
     );
